@@ -19,6 +19,7 @@
 		916D89F81F7184C700AEC953 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916D89F71F7184C700AEC953 /* UIViewControllerExtension.swift */; };
 		91E324A31F7257FE001A3A37 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E324A21F7257FE001A3A37 /* UIViewExtension.swift */; };
 		91E324A51F725AC8001A3A37 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E324A41F725AC8001A3A37 /* UIButtonExtension.swift */; };
+		91E324A71F726367001A3A37 /* FinishedGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E324A61F726367001A3A37 /* FinishedGoalVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		916D89F71F7184C700AEC953 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		91E324A21F7257FE001A3A37 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		91E324A41F725AC8001A3A37 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		91E324A61F726367001A3A37 /* FinishedGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGoalVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				916D89DA1F7161CC00AEC953 /* GoalsVC.swift */,
 				916D89F51F7182D700AEC953 /* CreateGoalVC.swift */,
+				91E324A61F726367001A3A37 /* FinishedGoalVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				916D89D91F7161CC00AEC953 /* AppDelegate.swift in Sources */,
 				91E324A51F725AC8001A3A37 /* UIButtonExtension.swift in Sources */,
 				916D89F81F7184C700AEC953 /* UIViewControllerExtension.swift in Sources */,
+				91E324A71F726367001A3A37 /* FinishedGoalVC.swift in Sources */,
 				91E324A31F7257FE001A3A37 /* UIViewExtension.swift in Sources */,
 				916D89E11F7161CC00AEC953 /* GoalPost.xcdatamodeld in Sources */,
 			);
