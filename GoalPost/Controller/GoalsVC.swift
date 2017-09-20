@@ -21,6 +21,11 @@ class GoalsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.fetchCoreDataObjects()
+        goalsTableView.reloadData()
+    }
+    
+    func fetchCoreDataObjects() {
         self.fetch { (isCompleted) in
             if isCompleted {
                 if goals.count >= 1 {
@@ -30,7 +35,6 @@ class GoalsVC: UIViewController {
                 }
             }
         }
-        goalsTableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -66,9 +70,39 @@ extension GoalsVC: UITableViewDataSource {
 
 extension GoalsVC: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (action, indexPath) in
+            self.removeGoal(atIndexPath: indexPath)
+            self.fetchCoreDataObjects()
+            self.goalsTableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        deleteAction.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        
+        return [deleteAction]
+    }
 }
 
 extension GoalsVC {
+    func removeGoal(atIndexPath indexPath: IndexPath) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        
+        managedContext.delete(goals[indexPath.row])
+        
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("Could not remove: \(error.localizedDescription)")
+        }
+    }
+    
     func fetch(completion: (_ complete: Bool) -> ()) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         
