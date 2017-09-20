@@ -15,6 +15,23 @@ class GoalsVC: UIViewController {
     
     //  MARK: Outlets
     @IBOutlet weak var goalsTableView: UITableView!
+    
+    //  MARK: Variables
+    var goals = [Goal]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetch { (isCompleted) in
+            if isCompleted {
+                if goals.count >= 1 {
+                    goalsTableView.isHidden = false
+                } else {
+                    goalsTableView.isHidden = true
+                }
+            }
+        }
+        goalsTableView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +53,13 @@ extension GoalsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return goals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell") as? GoalCell else { return UITableViewCell() }
-        cell.configureCell(description: "Eat salad twice a week.", type: .shortTerm, goalProgressAmount: 2)
+        let goal = goals[indexPath.row]
+        cell.configureCell(goal: goal)
         return cell
     }
 }
@@ -49,3 +67,40 @@ extension GoalsVC: UITableViewDataSource {
 extension GoalsVC: UITableViewDelegate {
     
 }
+
+extension GoalsVC {
+    func fetch(completion: (_ complete: Bool) -> ()) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        
+        do {
+            goals = try managedContext.fetch(fetchRequest)
+            completion(true)
+        } catch {
+            debugPrint("An error occurred: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
