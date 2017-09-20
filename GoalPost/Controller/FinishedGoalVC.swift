@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FinishedGoalVC: UIViewController {
     
@@ -29,12 +30,36 @@ class FinishedGoalVC: UIViewController {
         pointsTextField.delegate = self
     }
     
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        dismissDetail()
+    }
+    
     @IBAction func createGoalButtonPressed(_ sender: UIButton) {
         print("Create goal button was pressed.")
+    }
+    
+    func save(completion: (_ finished: Bool) -> ()) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        let goal = Goal(context: managedContext)
     }
 }
 
 extension FinishedGoalVC: UITextFieldDelegate {
     
-    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

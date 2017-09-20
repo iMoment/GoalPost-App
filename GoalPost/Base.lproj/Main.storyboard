@@ -220,6 +220,7 @@
                                         <state key="normal" image="back"/>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="AIh-mV-TY1" eventType="touchUpInside" id="Mfk-W1-y13"/>
+                                            <action selector="backButtonPressed:" destination="7H4-qC-dSs" eventType="touchUpInside" id="xsG-C6-cmv"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -319,6 +320,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfI-DK-uav" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7H4-qC-dSs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="917.60000000000002" y="132.68365817091455"/>
         </scene>
